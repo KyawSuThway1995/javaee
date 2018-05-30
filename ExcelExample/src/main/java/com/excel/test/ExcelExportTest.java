@@ -3,14 +3,14 @@ package com.excel.test;
 import java.io.File;
 import java.io.FileOutputStream;
 
-import org.apache.poi.hssf.usermodel.HSSFDataFormat;
 import org.apache.poi.hssf.usermodel.HSSFFont;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFDataFormat;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.excel.model.EmployeeModel;
 import com.excel.vo.Employee;
@@ -20,8 +20,8 @@ public class ExcelExportTest {
 	public static void main(String[] args) {
 		try {
 			EmployeeModel model = new EmployeeModel();
-			HSSFWorkbook workBook = new HSSFWorkbook();
-			HSSFSheet sheet = workBook.createSheet("Employee List");
+			XSSFWorkbook workBook = new XSSFWorkbook();
+			XSSFSheet sheet = workBook.createSheet("Employee List");
 			
 			Row row = sheet.createRow(0);
 			row.createCell(0).setCellValue("Name");
@@ -57,7 +57,7 @@ public class ExcelExportTest {
 				Cell cellDob = rowSheet.createCell(2);
 				cellDob.setCellValue(emp.getDob());
 				CellStyle style = workBook.createCellStyle();
-				HSSFDataFormat format = workBook.createDataFormat();
+				XSSFDataFormat format = workBook.createDataFormat();
 				style.setDataFormat(format.getFormat("yyyy-MM-dd"));
 				cellDob.setCellStyle(style);
 				
@@ -68,7 +68,7 @@ public class ExcelExportTest {
 				
 				r++;
 			}
-			FileOutputStream out = new FileOutputStream(new File("d:\\EmployeeList.xls"));
+			FileOutputStream out = new FileOutputStream(new File("d:\\EmployeeList.xlsx"));
 			workBook.write(out);
 			out.close();
 			System.out.println("Excel written successfully!");

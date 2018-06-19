@@ -2,8 +2,6 @@ package com.excel.test;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -16,7 +14,6 @@ public class ExcelImportTest {
 	public static void main(String[] args) {
 
 		Employee emp = new Employee();
-		List<Employee> list = new ArrayList<>();
 
 		try {
 			FileInputStream fin = new FileInputStream(new File("EmployeeList.xlsx"));
